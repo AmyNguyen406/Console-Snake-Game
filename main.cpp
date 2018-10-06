@@ -117,19 +117,23 @@ void Input()
 		switch (_getch())
 		{
 		case 'a':
-			snakeDir = LEFT;
+			if(snakeDir != RIGHT)
+				snakeDir = LEFT;
 			break;
 
 		case 'd':
-			snakeDir = RIGHT;
+			if(snakeDir != LEFT)
+				snakeDir = RIGHT;
 			break;
 
 		case 'w':
-			snakeDir = UP;
+			if(snakeDir != DOWN)
+				snakeDir = UP;
 			break;
 
 		case 's':
-			snakeDir = DOWN;
+			if(snakeDir != UP)
+				snakeDir = DOWN;
 			break;
 
 		case 'x':
@@ -210,9 +214,9 @@ int main()
 	Setup();
 	while (!gameOver)
 	{
-		Draw();
 		Input();
 		Logic();
+		Draw();
 		Sleep(150); //Make snake move slower
 	}
 	return 0;
